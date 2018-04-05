@@ -33,7 +33,7 @@ def reslice_image_set(in_files, image_shape, out_files=None, label_indices=None)
         interpolation = "continuous"
         if index in label_indices:
             interpolation = "nearest"
-        print(in_file, "From reslize image_set")
+        print("Beginning", in_file, "From reslize image_set")
         images.append(read_image(in_file, image_shape=image_shape, crop=crop_slices, interpolation=interpolation))
     if out_files:
         for image, out_file in zip(images, out_files):
@@ -45,7 +45,7 @@ def reslice_image_set(in_files, image_shape, out_files=None, label_indices=None)
 
 def get_complete_foreground(training_data_files):
     for i, set_of_files in enumerate(training_data_files):
-        print(set_of_files, "From get_complete_foreground")
+        print("Beginning", set_of_files, "From get_complete_foreground")
         subject_foreground = get_foreground_from_set_of_files(set_of_files)
         if i == 0:
             foreground = subject_foreground
