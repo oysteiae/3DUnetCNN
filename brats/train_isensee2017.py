@@ -68,7 +68,7 @@ def fetch_training_data_files(return_subject_ids=False):
         subject_files = list()
         subject_files.append(data_files[j])
         subject_files.append(label_files[j])
-        print("loading", data_files[j], label_files[j])
+
         training_data_files.append(tuple(subject_files))
 
     if return_subject_ids:
