@@ -52,6 +52,7 @@ def fetch_training_data_files(return_subject_ids=False):
     subject_ids = list()
     i = 1
     for data_file in glob.glob("/localdata/Normalized/data/*"):
+        print(data_file)
         subject_ids.append(os.path.basename(data_file))
         data_files = list()
         data_files.append(os.path.join(data_file))
@@ -59,6 +60,7 @@ def fetch_training_data_files(return_subject_ids=False):
         i += 1
 
     for label_file in glob.glob("/localdata/Normalized/labels/*"):
+        print(label_file)
         label_files = list()
         # Must add both training and labels
         label_files.append(os.path.join(label_file))
