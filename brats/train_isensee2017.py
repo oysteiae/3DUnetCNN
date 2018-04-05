@@ -52,13 +52,13 @@ def fetch_training_data_files(return_subject_ids=False):
     subject_ids = list()
     i = 1
     for data_file in glob.glob("/localdata/Normalized/data/*"):
-        subject_ids.append(os.path.basename(i))
+        subject_ids.append(os.path.basename(data_file))
         data_files = list()
         data_files.append(os.path.join(data_file))
 
         i += 1
 
-    for label_file in glob.glob("/localdata/Normalized/labels/*")):
+    for label_file in glob.glob("/localdata/Normalized/labels/*"):
         label_files = list()
         # Must add both training and labels
         label_files.append(os.path.join(subject_dir))
