@@ -53,24 +53,22 @@ def fetch_training_data_files(return_subject_ids=False):
     
     i = 1
     data_files = list()
-    for data_file in glob.glob("/localdata/Normalized/data/*"):
+    for data_file in sorted(glob.glob("/localdata/Normalized/data/*")):
         subject_ids.append(os.path.basename(data_file))
         data_files.append(os.path.join(data_file))
 
         i += 1
 
     label_files = list()
-    for label_file in glob.glob("/localdata/Normalized/labels/*"):
+    for label_file in sorted(glob.glob("/localdata/Normalized/labels/*")):
         # Must add both training and labels
         label_files.append(os.path.join(label_file))
 
     for j in range(0, len(data_files)):
         subject_files = list()
-
         subject_files.append(data_files[j])
         subject_files.append(label_files[j])
-        print("Loading", data_files[j], "and", label_files[j])
-        
+
         training_data_files.append(tuple(subject_files))
 
     if return_subject_ids:
