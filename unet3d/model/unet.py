@@ -3,6 +3,7 @@ from keras import backend as K
 from keras.engine import Input, Model
 from keras.layers import Conv3D, MaxPooling3D, UpSampling3D, Activation, BatchNormalization, PReLU, Deconvolution3D
 from keras.optimizers import Adam
+from tensorflow.python.client import device_lib
 
 from unet3d.metrics import dice_coefficient_loss, get_label_dice_coefficient_function, dice_coefficient
 
@@ -39,6 +40,7 @@ def unet_model_3d(input_shape, pool_size=(2, 2, 2), n_labels=1, initial_learning
     inputs = Input(input_shape)
     current_layer = inputs
     levels = list()
+    print(device_lib.list_local_devices())
 
     # add levels with max pooling
     for layer_depth in range(depth):
