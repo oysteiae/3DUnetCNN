@@ -154,6 +154,8 @@ def data_generator(data_file, index_list, batch_size=1, n_labels=1, labels=None,
                      augment_distortion_factor=augment_distortion_factor, patch_shape=patch_shape,
                      skip_blank=skip_blank, permute=permute)
             if len(x_list) == batch_size or (len(index_list) == 0 and len(x_list) > 0):
+                print(x_list)
+                print(y_list)
                 yield convert_data(x_list, y_list, n_labels=n_labels, labels=labels)
                 x_list = list()
                 y_list = list()
