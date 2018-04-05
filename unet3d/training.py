@@ -7,7 +7,6 @@ from keras.models import load_model
 
 from unet3d.metrics import (dice_coefficient, dice_coefficient_loss, dice_coef, dice_coef_loss,
                             weighted_dice_coefficient_loss, weighted_dice_coefficient)
-from tensorflow.python.client import device_lib
 
 K.set_image_dim_ordering('th')
 
@@ -76,12 +75,13 @@ def train_model(model, model_file, training_generator, validation_generator, ste
     :param n_epochs: Total number of epochs to train the model.
     :return: 
     """
-    print(device_lib.list_local_devices())
+    print("Starting training")
     model.fit_generator(generator=training_generator,
                         steps_per_epoch=steps_per_epoch,
                         epochs=n_epochs,
                         validation_data=validation_generator,
                         validation_steps=validation_steps,
+                        verbosity=2,
                         callbacks=get_callbacks(model_file,
                                                 initial_learning_rate=initial_learning_rate,
                                                 learning_rate_drop=learning_rate_drop,
