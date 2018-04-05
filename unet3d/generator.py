@@ -150,9 +150,17 @@ def data_generator(data_file, index_list, batch_size=1, n_labels=1, labels=None,
             shuffle(index_list)
         while len(index_list) > 0:
             index = index_list.pop()
+            
+            print("Popped")
             add_data(x_list, y_list, data_file, index, augment=augment, augment_flip=augment_flip,
                      augment_distortion_factor=augment_distortion_factor, patch_shape=patch_shape,
                      skip_blank=skip_blank, permute=permute)
+            
+            print("Added data")
+            print(len(x_list) == batch_size)
+            print(len(index_list) == 0) 
+            print(len(x_list) > 0)
+            
             if len(x_list) == batch_size or (len(index_list) == 0 and len(x_list) > 0):
                 print("Yielded")
                 yield convert_data(x_list, y_list, n_labels=n_labels, labels=labels)
