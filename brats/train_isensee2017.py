@@ -85,7 +85,7 @@ def main(overwrite=False):
         write_data_to_file(training_files, config["data_file"], image_shape=config["image_shape"],
                            subject_ids=subject_ids)
     data_file_opened = open_data_file(config["data_file"])
-
+    print(data_file_opened)
     if not overwrite and os.path.exists(config["model_file"]):
         model = load_old_model(config["model_file"])
     else:
