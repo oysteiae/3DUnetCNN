@@ -44,6 +44,7 @@ def reslice_image_set(in_files, image_shape, out_files=None, label_indices=None)
 
 def get_complete_foreground(training_data_files):
     for i, set_of_files in enumerate(training_data_files):
+        print(set_of_files)
         subject_foreground = get_foreground_from_set_of_files(set_of_files)
         if i == 0:
             foreground = subject_foreground

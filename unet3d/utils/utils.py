@@ -50,7 +50,6 @@ def read_image(in_file, image_shape=None, interpolation='continuous', crop=None)
     
     curframe = inspect.currentframe()
     calframe = inspect.getouterframes(curframe, 2)
-    print('caller name:', calframe[1][3])
 
     if crop:
         image = crop_img_to(image, crop, copy=True)
