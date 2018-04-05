@@ -65,8 +65,8 @@ def fetch_training_data_files(return_subject_ids=False):
 
     for j in range(0, len(data_files)):
         subject_files = list()
-        subject_files.append(data_files[i])
-        subject_files.append(label_files[i])
+        subject_files.append(data_files[j])
+        subject_files.append(label_files[j])
         training_data_files.append(tuple(subject_files))
 
     if return_subject_ids:
