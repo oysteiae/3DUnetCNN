@@ -55,7 +55,7 @@ def get_training_and_validation_generators(data_file, batch_size, n_labels, trai
                                                           overwrite=overwrite,
                                                           training_file=training_keys_file,
                                                           validation_file=validation_keys_file)
-
+    print(training_list)
     training_generator = data_generator(data_file, training_list,
                                         batch_size=batch_size,
                                         n_labels=n_labels,
