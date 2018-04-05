@@ -8,7 +8,7 @@ from unet3d.training import load_old_model, train_model
 
 
 config = dict()
-config["image_shape"] = (64, 64, 64)  # This determines what shape the images will be cropped/resampled to.
+config["image_shape"] = (128, 128, 128)  # This determines what shape the images will be cropped/resampled to.
 config["patch_shape"] = None  # switch to None to train on the whole image
 config["labels"] = (1, 2, 4)  # the label numbers on the input image
 config["n_base_filters"] = 16
@@ -65,8 +65,11 @@ def fetch_training_data_files(return_subject_ids=False):
 
     for j in range(0, len(data_files)):
         subject_files = list()
+
         subject_files.append(data_files[j])
         subject_files.append(label_files[j])
+        print("Loading", data_files[j], "and", label_files[j])
+        
         training_data_files.append(tuple(subject_files))
 
     if return_subject_ids:
