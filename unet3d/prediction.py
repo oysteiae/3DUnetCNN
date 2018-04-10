@@ -19,8 +19,10 @@ def patch_wise_prediction(model, data, overlap=0, batch_size=1, permute=False):
     :return:
     """
     patch_shape = tuple([int(dim) for dim in model.input.shape[-3:]])
+    print(patch_shape)
     predictions = list()
     indices = compute_patch_indices(data.shape[-3:], patch_size=patch_shape, overlap=overlap)
+    print(data.shape)
     batch = list()
     i = 0
     while i < len(indices):
@@ -33,6 +35,7 @@ def patch_wise_prediction(model, data, overlap=0, batch_size=1, permute=False):
         for predicted_patch in prediction:
             predictions.append(predicted_patch)
     output_shape = [int(model.output.shape[1])] + list(data.shape[-3:])
+    print(output_shape)
     return reconstruct_from_patches(predictions, patch_indices=indices, data_shape=output_shape)
 
 
